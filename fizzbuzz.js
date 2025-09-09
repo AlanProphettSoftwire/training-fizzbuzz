@@ -3,28 +3,35 @@ function mod(n, m) {
 }
 
 function is_bong_case(n) {
-    if (mod(n, 11)) {
-        return true;
-    }
-    return false;
+    return mod(n, 11);
+}
+
+function is_reverse_case(n) {
+    return mod(n, 17);
 }
 
 function fizzbuzz() {
-    conditions = [num => mod(num,3), num => mod(num,5), num => mod(num,7)];
-    partial_strings = ["Fizz", "Buzz", "Bang"];
+    conditions = [num => mod(num,3), num => mod(num, 13), num => mod(num,5), num => mod(num,7)];
+    partial_strings = ["Fizz", "Fezz", "Buzz", "Bang"];
 
-    for (let i = 1; i <= 100; i++) {
+    for (let i = 1; i <= 3315; i++) {
         if (is_bong_case(i)) {
             console.log("Bong");
             continue;
         }
 
-        let output = "";
+        let output = [];
         for (let j = 0; j < conditions.length; j++) {
             if (conditions[j](i)) {
-                output += partial_strings[j];
+                output.push(partial_strings[j]);
             }
         }
+
+        if (is_reverse_case(i)) {
+            output.reverse();
+        }
+
+        output = output.join('');
         console.log(output || i);
     }
 
