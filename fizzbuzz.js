@@ -1,8 +1,12 @@
-conditions = [num => mod(num,3), num => mod(num, 13), num => mod(num,5), num => mod(num,7)];
+conditions = [num => mod(num,3), num => is_fezz_case(num), num => mod(num,5), num => mod(num,7)];
 partial_strings = ["Fizz", "Fezz", "Buzz", "Bang"];
 
 function mod(n, m) {
     return n % m == 0;
+}
+
+function is_fezz_case(n) {
+    return mod(n, 13);
 }
 
 function is_bong_case(n) {
@@ -26,7 +30,7 @@ function get_output_partial_strings(n) {
 function fizzbuzz(n) {
     for (let i = 1; i <= n; i++) {
         if (is_bong_case(i)) {
-            if (mod(i, 13)) {
+            if (is_fezz_case(i)) {
                 console.log("FezzBong");
                 continue;
             }
