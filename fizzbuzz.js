@@ -26,6 +26,10 @@ function get_output_partial_strings(n) {
 function fizzbuzz(n) {
     for (let i = 1; i <= n; i++) {
         if (is_bong_case(i)) {
+            if (mod(i, 13)) {
+                console.log("FezzBong");
+                continue;
+            }
             console.log("Bong");
             continue;
         }
@@ -42,5 +46,5 @@ function fizzbuzz(n) {
 
 }
 
-fizzbuzz(3315);
+fizzbuzz(143);
 
